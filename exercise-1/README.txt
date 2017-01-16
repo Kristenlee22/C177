@@ -1,0 +1,1 @@
+The goal of this exercise is to understand the "git add" "git commit" and "git push" workflow
