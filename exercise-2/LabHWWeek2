@@ -5,14 +5,19 @@ As species of the same genus have usually, though by no means invariably, some s
 1.  Write a regular expression that will find all of the words beginning with the letter `s`. Your regular expression should capture the whole word- not just the beginning `s`!  
 ANSWER:________________________________________________
 
+species of charlock will supplant another, and so in other cases. We can dimly see why the competition should be most severe between allied forms, which fill nearly the same place in the economy of nature; but probably in no one case could we precisely say why one species has been victorious over another in the great battle of life.
+
+1.  Write a regular expression that will find all of the words beginning with the letter `s`. Your regular expression should capture the whole word- not just the beginning `s`!  
+ANSWER:__s\w+______________________________________________
+
 2.  Write a regular expression that will find the last word of every sentence. Your regular expression should capture the whole last word - not just the first or last letter! (Hint: note that not all sentences end with a period- one ends in an `!`)   
-ANSWER:________________________________________________
+ANSWER:___\s(\w+)[\.!]_____________________________________________
 
 3.  Write a regular expression that will find the first word of every sentence. Your regular expression should match the whole first word- not just the first letter!    
-ANSWER:________________________________________________
+ANSWER:__[\.!]\s\w+______________________________________________
 
 4.  Write a regular expression that will match the **sentence** containing the phrase "Asiatic cockroach".  
-ANSWER:________________________________________________  
+ANSWER:__[^.]* Asiatic cockroach [^.]*\.______________________________________________  
 
 Now consider the following comma-delimited rows of data (this is a small number of rows from some of Gaurav's research, with the actual species codes and seed counts changed...):  
 
@@ -41,8 +46,8 @@ Now consider the following comma-delimited rows of data (this is a small number 
 	744,R,2,MIBA,1096
 
 5.  Write a regular expression that will match any row with an `NA` in the final column.  
-ANSWER:________________________________________________
+ANSWER:____^\s.*NA$____________________________________________
 
 6.  Write a regular expression that will match all rows for where `plot_num` (column 1) is either 740, 741, or 742, and `replicate` (column 3) is either 1 or 4.  
-ANSWER:________________________________________________
+ANSWER:____^\s74[012],R,[14].*____________________________________________
 	
