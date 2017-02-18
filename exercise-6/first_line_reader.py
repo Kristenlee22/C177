@@ -4,3 +4,7 @@ in_file = open(file_to_read)
 
 print("The first line of the file " + file_to_read + " is \n" + in_file.readline())
 in_file.close()
+
+
+
+#prints the first line of any file
