@@ -1,3 +1,5 @@
+import csv
+from collections import Counter
 import sys
 
 file_name = sys.argv[1]
@@ -14,5 +16,8 @@ with open(file_name, encoding = "ISO-8859-1") as csv_file:
 counted = Counter(families)
 for key, value in counted.items():
     print(str(value) + " total species in Family " + key)
+
+
+
 
 
