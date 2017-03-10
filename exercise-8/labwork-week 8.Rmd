@@ -1,0 +1,59 @@
+---
+title: "In class exercise 8"
+author: ""
+output: md_document
+---
+
+
+## Reasing in data files
+```{r}
+cocoli_dat <- read.table("~/Desktop/eeb-177/class-assignments/classwork-Tuesday-2-21/cocoli.txt", header=TRUE)
+cocoli_dat
+
+sizes_in_94 <- cocoli_dat$dbh1   #$ extracts column
+names(sizes_in_94) <- cocoli_dat$tag  #take column tag and use it to name sizes in 94
+sizes_in_94  #vectors in R are like lists in python, so you can index a vector. one annoying difference first element is index 1
+sizes_in_94[1:10]
+sizes_in_94["000009"] #can index by name
+sizes_in_94[c("000009", "000099")] #to get two values
+
+#now going to calc regular growth rate
+
+sizes_in_97 <- cocoli_dat$dbh2
+
+rgr_1 <- ((sizes_in_97 - sizes_in_94) / sizes_in_94)/3
+rgr_1
+
+#now want to add these values to a column
+
+cocoli_dat$rgr1 <- rgr_1
+cocoli_dat
+```
+```{r}
+#encouraged to use ggplot2
+# bar graph - make with barplot()
+# box plot - make with boxplot()
+# scatterplot - make with plot()
+# histogram - make with hist()
+
+hist(sizes_in_94, xlab = "dbh (mm)", main = "Distribution of Tree Sizes in Cocoli (1994)") # adding labels and title
+?hist #shows all the arguments we can edit
+
+plot(x = sizes_in_94, y = sizes_in_97, main = "Scatterplot of Sizes", xlab = "Size in 1994 (mm)", ylab = "Size in 1997 (mm)", pch = 19, col = "dark green", log = "xy")  #pch gives you a different kind of dot
+
+```
+```{r}
+library(dplyr)
+
+
+# %>% is identical to | in terminal
+cocoli_dat %>% filter(dbh1 > 0) %>% select(dbh1)
+
+cocoli_dat %>% filter(dbh1 > 0) %>% arrange(-dbh1) # arranges in descending order 
+
+cocoli_dat %>% filter(dbh1 > 0) %>% arrange(-dbh1) %>% select(spcode)
+
+cocoli_dat %>% filter(dbh1 > 0) %>%group_by(spcode)%>% summarize(mean_dbh_1994 = mean(dbh1)) %>% arrange(-mean_dbh_1994)
+
+```
+
